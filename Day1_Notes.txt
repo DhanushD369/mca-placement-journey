@@ -16,3 +16,5 @@ git push
 Key Learning:
 Git is a version control system.
 GitHub stores repositories online.
+Day 2 Started
+Day 2 Started
