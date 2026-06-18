@@ -1,0 +1,18 @@
+Linux Commands Learned:
+pwd
+ls
+cd
+mkdir
+touch
+cat
+
+Git Commands Learned:
+git init
+git status
+git add .
+git commit -m message
+git push
+
+Key Learning:
+Git is a version control system.
+GitHub stores repositories online.
