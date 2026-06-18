@@ -1,0 +1,352 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    color: #1a1a1a;
+    overflow-x: hidden;
+
+    /* Bright AI gradient background */
+    background: linear-gradient(135deg, #e0f7ff, #f5e8ff, #ffffff);
+    background-size: 300% 300%;
+    animation: gradientMove 12s ease infinite;
+}
+
+/* Animated gradient */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Neural Canvas */
+#neuralCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+/* Main Container */
+.container {
+    position: relative;
+    z-index: 1;
+    width: 75%;
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 50px;
+    border-radius: 25px;
+
+    /* Glass effect but bright */
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20px);
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* Heading */
+h2 {
+    text-align: center;
+    font-size: 34px;
+    margin-bottom: 40px;
+    background: linear-gradient(90deg, #00c6ff, #a100ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Sections */
+.section {
+    margin-bottom: 30px;
+    padding: 25px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    transition: 0.3s ease;
+}
+
+.section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+/* Score Circle */
+.score-circle {
+    width: 160px;
+    height: 160px;
+    margin: 20px auto;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+    border: 8px solid #00c6ff;
+    background: white;
+    box-shadow: 0 0 30px rgba(0,198,255,0.4);
+}
+
+.green { border-color: #00c853; color: #00c853; }
+.orange { border-color: #ff9800; color: #ff9800; }
+.red { border-color: #ff3d00; color: #ff3d00; }
+
+.good { color: #00c853; font-weight: 600; }
+.bad { color: #ff3d00; font-weight: 600; }
+
+/* Job Buttons */
+.job-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    margin-right: 15px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #00c6ff, #a100ff);
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.job-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(161, 0, 255, 0.3);
+}
+/* Analyze Resume Button */
+form button {
+    padding: 12px 30px;
+    border-radius: 12px;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+
+    background: linear-gradient(90deg, #00c6ff, #8a2be2);
+    color: white;
+
+    box-shadow: 0 8px 25px rgba(138, 43, 226, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect */
+form button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(0, 198, 255, 0.4);
+}
+form {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap; /* prevents breaking on smaller screens */
+}
+
+form label {
+    margin-right: 5px;
+}
+
+form select,
+form input[type="file"] {
+    width: auto; /* prevent full width */
+}
+
+form button {
+    margin-left: 10px;
+}
+
+/* ===============================
+   MODERN FORM DESIGN
+=================================*/
+
+.form-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Each form block */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels */
+.form-group label {
+    font-size: 14px;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #444;
+}
+
+/* Dropdown */
+select {
+    padding: 12px 18px;
+    border-radius: 12px;
+    border: 2px solid #d0d0ff;
+    font-size: 15px;
+    background: white;
+    transition: 0.3s ease;
+}
+
+select:focus {
+    outline: none;
+    border-color: #8a2be2;
+    box-shadow: 0 0 10px rgba(138, 43, 226, 0.2);
+}
+
+/* File Input */
+input[type="file"] {
+    padding: 8px;
+    border-radius: 12px;
+    border: 2px solid #d0d0ff;
+    background: white;
+    cursor: pointer;
+}
+
+/* File button styling */
+input[type="file"]::file-selector-button {
+    background: linear-gradient(90deg, #00c6ff, #8a2be2);
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+input[type="file"]::file-selector-button:hover {
+    transform: scale(1.05);
+}
+
+/* Analyze Button */
+.analyze-btn {
+    padding: 14px 35px;
+    border-radius: 15px;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+
+    background: linear-gradient(90deg, #ff6a00, #ff3d00);
+    box-shadow: 0 8px 25px rgba(255, 61, 0, 0.3);
+    transition: 0.3s ease;
+}
+
+.analyze-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(255, 106, 0, 0.4);
+}
+.row {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+select {
+    width: 300px;
+    padding: 12px;
+    border-radius: 12px;
+    border: 2px solid #d0d0ff;
+}
+
+input[type="file"] {
+    width: 300px;
+    padding: 8px;
+    border-radius: 12px;
+    border: 2px solid #d0d0ff;
+}
+
+.analyze-btn {
+    padding: 14px 35px;
+    border-radius: 15px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    background: linear-gradient(90deg, #00c6ff, #8a2be2);
+}
+
+.role-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.skill-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.skill-name {
+    font-weight: 500;
+}
+
+.learning-links {
+    display: flex;
+    gap: 8px;
+}
+
+.learn-btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    color: white;
+}
+
+.yt {
+    background-color: #fa7676;
+}
+
+.udemy {
+    background-color: #a435f0;
+}
+
+.learn-btn:hover {
+    opacity: 0.85;
+}
+
+.linkedin {
+    background-color: #0077b5;
+}
+
+.naukri {
+    background-color: #28a745;
+}
+.progress-container {
+    margin: 20px 0;
+}
+
+.progress-label {
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background: #eee;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 20px;
+    transition: width 1.5s ease-in-out;
+}
+
+.green { background: #28a745; }
+.orange { background: #ff9800; }
+.red { background: #f44336; }
+.linkedin {
+    background-color: #0a66c2;
+}

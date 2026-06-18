@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Resume Intelligence Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<canvas id="neuralCanvas"></canvas>
+
+<div class="container">
+
+    <h2>AI Resume Intelligence Dashboard</h2>
+
+    {% if score >= 70 %}
+        {% set score_class = "green" %}
+    {% elif score >= 40 %}
+        {% set score_class = "orange" %}
+    {% else %}
+        {% set score_class = "red" %}
+    {% endif %}
+
+    <!-- ================= SCORE ================= -->
+
+    <div class="progress-container">
+        <div class="progress-label">
+            Resume Match Score: {{ score }}%
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill {{ score_class }}"
+                 style="width: {{ score }}%;">
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= SKILL GAP ================= -->
+
+    <div class="progress-container">
+        <div class="progress-label">
+            Skill Gap: {{ skill_gap }}%
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill red"
+                 style="width: {{ skill_gap }}%;">
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= ROLE ================= -->
+
+    <div class="section">
+        <h3>Selected Role</h3>
+        <p class="role-name">{{ role }}</p>
+    </div>
+
+    <!-- ================= MATCHED SKILLS ================= -->
+
+    <div class="section">
+        <h3>Matched Skills</h3>
+
+        {% if found %}
+        <ul>
+            {% for skill in found %}
+                <li class="good">{{ skill }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <p>No matching skills found.</p>
+        {% endif %}
+    </div>
+
+    <!-- ================= MISSING SKILLS ================= -->
+
+    <div class="section">
+        <h3>Missing Skills (Recommended Learning)</h3>
+
+        {% if missing %}
+        <ul class="skill-list">
+
+            {% for skill in missing %}
+            <li class="bad skill-item">
+
+                <div class="skill-name">
+                    {{ skill }}
+                </div>
+
+                <div class="learning-links">
+
+                    <a class="learn-btn yt"
+                       href="{{ youtube_links[skill] }}"
+                       target="_blank">
+                       Learn on YouTube
+                    </a>
+
+                    <a class="learn-btn udemy"
+                       href="{{ udemy_links[skill] }}"
+                       target="_blank">
+                       Learn on Udemy
+                    </a>
+
+                    <a class="learn-btn linkedin"
+                       href="{{ linkedin_courses[skill] }}"
+                       target="_blank">
+                       LinkedIn Course
+                    </a>
+
+                </div>
+
+            </li>
+            {% endfor %}
+
+        </ul>
+
+        {% else %}
+            <p class="good">
+                Excellent! No missing skills detected 🎉
+            </p>
+        {% endif %}
+    </div>
+
+    <!-- ================= RESUME SECTIONS ================= -->
+
+    <div class="section">
+        <h3>Resume Section Analysis</h3>
+
+        <ul>
+            {% for section, status in sections.items() %}
+                <li>
+                    {{ section }} :
+
+                    {% if status %}
+                        <span class="good">✔ Found</span>
+                    {% else %}
+                        <span class="bad">✘ Missing</span>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- ================= AI RECOMMENDATION ================= -->
+
+    <div class="section">
+        <h3>AI Career Recommendation</h3>
+
+        <p class="ai-recommend">
+            {{ recommendation }}
+        </p>
+    </div>
+
+    <!-- ================= JOB SEARCH (FIXED) ================= -->
+
+   <div class="section">
+    <h3>Smart Job Search (AI Powered)</h3>
+
+    {% if jobs %}
+        {% for job in jobs %}
+            <a class="job-btn" href="{{ job.link }}" target="_blank">
+                {{ job.title }}
+            </a>
+        {% endfor %}
+    {% else %}
+        <p>No jobs found</p>
+    {% endif %}
+
+</div>
+<!-- ================= PDF DOWNLOAD ================= -->
+
+<div class="section">
+    <a class="job-btn"
+       href="{{ url_for('download_report', score=score, role=role) }}">
+
+       Download AI Resume Report (PDF)
+
+    </a>
+</div>
+<div class="section">
+    <a class="job-btn"
+       href="/send_email">
+
+       Send Report to Email 📩
+
+    </a>
+</div>
+
+<script src="{{ url_for('static', filename='neural.js') }}"></script>
+
+</body>
+</html>

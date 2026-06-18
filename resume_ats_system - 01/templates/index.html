@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Resume Intelligence Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- Neural Background -->
+<canvas id="neuralCanvas"></canvas>
+
+<div class="container">
+    <h2>AI Resume Intelligence Dashboard</h2>
+
+    <form action="/analyze" method="POST" enctype="multipart/form-data">
+
+        <label>Select Job Role:</label>
+        <select name="job_role" required>
+            {% for key, role in ROLE_SKILLS.items() %}
+                <option value="{{ key }}">{{ role.name }}</option>
+            {% endfor %}
+        </select>
+
+        <label>Upload Resume (PDF only):</label>
+        <input type="file" name="resume" accept=".pdf" required>
+
+        <button type="submit">Analyze Resume</button>
+
+    </form>
+</div>
+
+<!-- Neural JS -->
+<script src="{{ url_for('static', filename='neural.js') }}"></script>
+
+</body>
+</html>
