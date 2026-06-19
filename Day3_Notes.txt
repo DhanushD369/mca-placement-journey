@@ -1,0 +1,17 @@
+Day:3
+
+Linux: Done
+Git: Done
+Python: Done
+AWS: Basics Learned
+Project: Updated
+
+Hours Studied: __
+
+What I Learned:
+1. Linux file operations (cp, mv, rm)
+2. Git history and changes (log, diff)
+3. Python variables, input, and output
+
+Questions:
+None
